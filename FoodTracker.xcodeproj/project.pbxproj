@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		691714BA1DD13D9E00140002 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691714B91DD13D9E00140002 /* RatingControl.swift */; };
 		693836F61DBFFD63009B968D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693836F51DBFFD63009B968D /* AppDelegate.swift */; };
 		693836F81DBFFD63009B968D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693836F71DBFFD63009B968D /* ViewController.swift */; };
 		693836FB1DBFFD63009B968D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 693836F91DBFFD63009B968D /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		691714B91DD13D9E00140002 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		693836F21DBFFD63009B968D /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		693836F51DBFFD63009B968D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		693836F71DBFFD63009B968D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				693836F51DBFFD63009B968D /* AppDelegate.swift */,
 				693836F71DBFFD63009B968D /* ViewController.swift */,
 				693836F91DBFFD63009B968D /* Main.storyboard */,
+				691714B91DD13D9E00140002 /* RatingControl.swift */,
 				693836FC1DBFFD63009B968D /* Assets.xcassets */,
 				693836FE1DBFFD63009B968D /* LaunchScreen.storyboard */,
 				693837011DBFFD63009B968D /* Info.plist */,
@@ -187,12 +190,14 @@
 		693836EA1DBFFD63009B968D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = test;
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = vpetrenko;
 				TargetAttributes = {
 					693836F11DBFFD63009B968D = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 9UD6H7A99H;
 						ProvisioningStyle = Automatic;
 					};
 					693837051DBFFD63009B968D = {
@@ -260,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				693836F81DBFFD63009B968D /* ViewController.swift in Sources */,
+				691714BA1DD13D9E00140002 /* RatingControl.swift in Sources */,
 				693836F61DBFFD63009B968D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +368,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -412,6 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9UD6H7A99H;
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vpetrenko.FoodTracker;
@@ -424,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9UD6H7A99H;
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vpetrenko.FoodTracker;
