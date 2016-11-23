@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     @IBOutlet weak var mealTextField: UITextField!
     @IBOutlet weak var labelMeal: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var ratingControl: RatingControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         mealTextField.delegate = self
     }
     
-    // MARK: Actions
-    @IBAction func setDefaultText(_ sender: Any) {
-        labelMeal.text = "Default text"
-    }
-    
+    // MARK: Actions    
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         // Hide the keyboard.
         mealTextField.resignFirstResponder()
@@ -45,6 +42,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     // MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
         // Hide the keyboard.
         mealTextField.resignFirstResponder()
         return true
@@ -56,7 +54,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     
     // MARK: UIImagePickerControllerDelegate
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 
         // Dismiss the picker if the user canceled.
         dismiss(animated: true, completion: nil)
