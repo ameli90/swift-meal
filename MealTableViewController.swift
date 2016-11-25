@@ -18,17 +18,21 @@ class MealTableViewController: UITableViewController {
         super.viewDidLoad()
 
         loadSampleMeals()
+        
+        // Enable self sizing rows.
+        tableView.estimatedRowHeight = 85
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     func loadSampleMeals() {
         let photo1 = UIImage(named: "meal1")!
-        let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4)!
+        let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. END")!
         
         let photo2 = UIImage(named: "meal2")!
-        let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5)!
+        let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")!
         
         let photo3 = UIImage(named: "meal3")!
-        let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3)!
+        let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. END")!
         
         meals += [meal1, meal2, meal3]
     }
@@ -63,6 +67,7 @@ class MealTableViewController: UITableViewController {
         cell.photoImageView.image = meal.photo
         cell.ratingControl.rating = meal.rating
         
+        cell.message.text = meal.message
         return cell
     }
 
