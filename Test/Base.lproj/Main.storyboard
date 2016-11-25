@@ -120,7 +120,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add meal" id="aMo-Py-faC">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ehl-Vl-4He"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ehl-Vl-4He">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="tQe-MX-5te"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="IQ0-1H-EnV">
                             <connections>
                                 <segue destination="8XX-9e-mvn" kind="unwind" unwindAction="unwindToMealListWithSender:" id="CuF-aB-lne"/>
