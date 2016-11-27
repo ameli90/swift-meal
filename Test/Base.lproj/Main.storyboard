@@ -91,7 +91,7 @@
                     <navigationItem key="navigationItem" title="Your meals" id="ZeZ-gm-bfj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZgN-n0-Z0O">
                             <connections>
-                                <segue destination="yPS-QG-qre" kind="presentation" id="cL9-mB-OS6"/>
+                                <segue destination="yPS-QG-qre" kind="presentation" identifier="AddItem" id="cL9-mB-OS6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

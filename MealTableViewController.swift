@@ -16,12 +16,20 @@ class MealTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        loadSampleMeals()
         
         // Enable self sizing rows.
         tableView.estimatedRowHeight = 85
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // Load any saved meals, otherwise load sample data.
+        if let savedMeals = loadMeals() {
+            meals += savedMeals
+        } else {
+            // Load the sample data.
+            loadSampleMeals()
+        }
+        
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 
     func loadSampleMeals() {
@@ -34,7 +42,9 @@ class MealTableViewController: UITableViewController {
         let photo3 = UIImage(named: "meal3")!
         let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. END")!
         
+
         meals += [meal1, meal2, meal3]
+        print("LOAD SAMLE ", meals.count)
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,38 +83,45 @@ class MealTableViewController: UITableViewController {
 
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
-        let sourceViewController = sender.source as? MealViewController
-        let meal = sourceViewController?.meal
+        if let sourceViewController = sender.source as? MealViewController,
+            let meal = sourceViewController.meal {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing meal.
+                meals[selectedIndexPath.row] = meal
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                
+                // Add a new meal.
+                let newIndexPath = IndexPath(row: meals.count, section: 0)
+                
+                meals.append(meal)
+                tableView.insertRows(at: [newIndexPath], with: .bottom)
+            }
 
-        if meal != nil {
-
-            // Add a new meal.
-            let newIndexPath = IndexPath(row: meals.count, section: 0)
-
-            meals.append(meal!)
-            tableView.insertRows(at: [newIndexPath], with: .bottom)
+            // Save the meals.
+            saveMeals()
         }
     }
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            meals.remove(at: indexPath.row)
+
+            saveMeals()
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -121,14 +138,34 @@ class MealTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetail" {
+            let mealDetailViewController = segue.destination as! MealViewController
+            // Get the cell that generated this segue.
+            if let selectedMealCell = sender as? MealTableViewCell {
+                let indexPath = tableView.indexPath(for: selectedMealCell)!
+                let selectedMeal = meals[indexPath.row]
+                mealDetailViewController.meal = selectedMeal
+            }
+        }
+        else if segue.identifier == "AddItem" {
+            print("Adding new meal.")
+        }
     }
-    */
-
+ 
+    func loadMeals() -> [Meal]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveURL!.path) as? [Meal]
+    }
+    
+    // MARK: NSCoding
+    func saveMeals() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL!.path)
+        
+        if !isSuccessfulSave {
+            print("Failed to save meals...")
+        }
+    }
 }
