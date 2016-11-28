@@ -7,6 +7,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -89,11 +90,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Your meals" id="ZeZ-gm-bfj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZgN-n0-Z0O">
-                            <connections>
-                                <segue destination="yPS-QG-qre" kind="presentation" identifier="AddItem" id="cL9-mB-OS6"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="ZgN-n0-Z0O">
+                                <connections>
+                                    <segue destination="yPS-QG-qre" kind="presentation" identifier="AddItem" id="cL9-mB-OS6"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="rke-ZF-Fpq"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbn-xk-KUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
