@@ -14,7 +14,7 @@
         <!--Your meals-->
         <scene sceneID="sPi-NV-NB4">
             <objects>
-                <tableViewController id="0NZ-GU-8Bp" customClass="MealTableViewController" customModule="FoodTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchResultsViewControllerStoryboardIdentifier" id="0NZ-GU-8Bp" customClass="MealTableViewController" customModule="FoodTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="229" sectionHeaderHeight="28" sectionFooterHeight="28" id="h3c-Sc-7F1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,9 +96,16 @@
                                     <segue destination="yPS-QG-qre" kind="presentation" identifier="AddItem" id="cL9-mB-OS6"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="search" id="rke-ZF-Fpq"/>
+                            <barButtonItem systemItem="search" id="rke-ZF-Fpq">
+                                <connections>
+                                    <action selector="openSearch:" destination="0NZ-GU-8Bp" id="Pnr-4Y-PbR"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="h3c-Sc-7F1" id="uXC-ho-jKi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbn-xk-KUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

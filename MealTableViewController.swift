@@ -8,12 +8,40 @@
 
 import UIKit
 
-class MealTableViewController: UITableViewController {
+class MealTableViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: Properties
     
+    @IBOutlet var searchBar: UITableView!
     var meals = [Meal]()
+    var searchController: UISearchController!
     
+    @IBAction func openSearch(_ sender: Any) {
+        
+        // Create the search results view controller and use it for the `UISearchController`.
+        let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "SearchResultsViewControllerStoryboardIdentifier") as! MealTableViewController
+        
+        // Create the search controller and make it perform the results updating.
+        searchController = UISearchController(searchResultsController: searchResultsController)
+        searchController.searchBar.delegate = self
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+        // Present the view controller.
+        present(searchController, animated: true, completion: nil)
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let resultController = self.searchController.searchResultsController as? MealTableViewController {
+            let photo1 = UIImage(named: "meal1")!
+            let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. END")!
+
+            resultController.meals = [meal1]
+
+            resultController.tableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +72,6 @@ class MealTableViewController: UITableViewController {
         
 
         meals += [meal1, meal2, meal3]
-        print("LOAD SAMLE ", meals.count)
     }
     
     override func didReceiveMemoryWarning() {
@@ -168,4 +195,7 @@ class MealTableViewController: UITableViewController {
             print("Failed to save meals...")
         }
     }
+
+    
+    
 }
