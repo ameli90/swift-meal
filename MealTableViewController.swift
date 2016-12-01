@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FMMosaicLayout
 
 class MealTableViewController: UITableViewController, UISearchBarDelegate {
 
@@ -105,6 +106,11 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
         cell.ratingControl.rating = meal.rating
         
         cell.message.text = meal.message
+        
+        cell.setCollectionViewDataSourceDelegate(dataDelegate: self, dataSource: self, forRow: indexPath.row)
+
+        print("HEIGHT 1 =", cell.imagesCollection.contentSize.height, "HEIGHT offset=", cell.imagesCollection.contentOffset.y)
+        cell.collectionHeight.constant = 390
         return cell
     }
 
@@ -195,7 +201,44 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
             print("Failed to save meals...")
         }
     }
-
-    
-    
 }
+
+extension MealTableViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, FMMosaicLayoutDelegate {
+
+    public func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: FMMosaicLayout!, numberOfColumnsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewReuseIdentifier", for: indexPath as IndexPath) as! ImageCollectionViewCell
+        
+        let images = [#imageLiteral(resourceName: "meal1")]
+        cell.image.image = images[0]
+        
+        return cell
+        
+    }
+
+    // Size vertically between images
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    // Eaach cell dimensions
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 4 - 1
+
+        return CGSize(width: width, height: width)
+    }
+}
+
