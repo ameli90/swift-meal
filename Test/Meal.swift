@@ -16,6 +16,7 @@ class Meal: NSObject, NSCoding {
     var photo: UIImage?
     var rating: Int
     var message: String?
+    var collection: [UIImage]?
     
     // MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -27,6 +28,7 @@ class Meal: NSObject, NSCoding {
         static let photoKey = "photo"
         static let ratingKey = "rating"
         static let messageKey = "message"
+        static let collectionKey = "collection"
     }
     
     // MARK: NSCoding
@@ -35,6 +37,7 @@ class Meal: NSObject, NSCoding {
         aCoder.encode(photo, forKey: PropertyKey.photoKey)
         aCoder.encode(rating, forKey: PropertyKey.ratingKey)
         aCoder.encode(message, forKey: PropertyKey.messageKey)
+        aCoder.encode(collection, forKey: PropertyKey.collectionKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -44,19 +47,21 @@ class Meal: NSObject, NSCoding {
         let rating = aDecoder.decodeInteger(forKey: PropertyKey.ratingKey)
         let message = aDecoder.decodeObject(forKey: PropertyKey.messageKey) as? String
         
+        let collection = aDecoder.decodeObject(forKey: PropertyKey.collectionKey) as? [UIImage]
         // Must call designated initializer.
-        self.init(name: name, photo: photo, rating: rating, message: message)
+        self.init(name: name, photo: photo, rating: rating, message: message, collection: collection)
     }
     
     
     // MARK: Initialization
     
-    init?(name: String, photo: UIImage?, rating: Int, message: String?) {
+    init?(name: String, photo: UIImage?, rating: Int, message: String?, collection: [UIImage]?) {
         // Initialize stored properties.
         self.name = name
         self.photo = photo
         self.rating = rating
         self.message = message
+        self.collection = collection
         
         super.init()
         

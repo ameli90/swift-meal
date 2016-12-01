@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="360"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W8e-eK-lzn" id="oMX-be-0fD">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="359"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="359.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BTc-Lg-bzS">
@@ -63,7 +63,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="atN-ZO-jdO">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="atN-ZO-jdO">
                                             <rect key="frame" x="8" y="116.33333333333331" width="398" height="233.33333333333337"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -83,7 +83,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="616FCD62-F8DD-4115-911D-BFD4AD77B465" translatesAutoresizingMaskIntoConstraints="NO" id="ike-jn-7ap">
+                                                            <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8D396055-A112-46D4-85AA-A056D023CF1E" translatesAutoresizingMaskIntoConstraints="NO" id="ike-jn-7ap">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="ike-jn-7ap" secondAttribute="height" multiplier="1:1" id="gHB-mc-UzS"/>
@@ -278,7 +278,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="616FCD62-F8DD-4115-911D-BFD4AD77B465" width="540" height="540">
+        <image name="8D396055-A112-46D4-85AA-A056D023CF1E" width="540" height="540">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

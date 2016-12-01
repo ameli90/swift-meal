@@ -36,7 +36,7 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let resultController = self.searchController.searchResultsController as? MealTableViewController {
             let photo1 = UIImage(named: "meal1")!
-            let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. END")!
+            let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. END", collection: nil)!
 
             resultController.meals = [meal1]
 
@@ -51,25 +51,25 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // Load any saved meals, otherwise load sample data.
-        if let savedMeals = loadMeals() {
-            meals += savedMeals
-        } else {
+        //if let savedMeals = loadMeals() { //UNCOMMENT TO USE ARCHIVATOR
+        //    meals += savedMeals
+        //} else {
             // Load the sample data.
             loadSampleMeals()
-        }
+        //}
         
         navigationItem.leftBarButtonItem = editButtonItem
     }
 
     func loadSampleMeals() {
         let photo1 = UIImage(named: "meal1")!
-        let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. END")!
+        let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. END", collection: [#imageLiteral(resourceName: "meal3"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2")])!
         
         let photo2 = UIImage(named: "meal2")!
-        let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")!
+        let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", collection: [#imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2")])!
         
         let photo3 = UIImage(named: "meal3")!
-        let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. END")!
+        let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. END", collection: [#imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2"), #imageLiteral(resourceName: "meal2")])!
         
 
         meals += [meal1, meal2, meal3]
@@ -104,16 +104,20 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
 
         cell.photoImageView.image = meal.photo
         cell.ratingControl.rating = meal.rating
-        
         cell.message.text = meal.message
-        
-        cell.setCollectionViewDataSourceDelegate(dataDelegate: self, dataSource: self, forRow: indexPath.row)
 
-        print("HEIGHT 1 =", cell.imagesCollection.contentSize.height, "HEIGHT offset=", cell.imagesCollection.contentOffset.y)
+        //print("HEIGHT 1 =", cell.imagesCollection.contentSize.height, "HEIGHT offset=", cell.imagesCollection.contentOffset.y)
         cell.collectionHeight.constant = 390
         return cell
     }
 
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        guard let tableViewCell = cell as? MealTableViewCell else { return }
+        
+        tableViewCell.setCollectionViewDataSourceDelegate(dataDelegate: self, dataSource: self, forRow: indexPath.row)
+    }
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? MealViewController,
@@ -210,16 +214,17 @@ extension MealTableViewController: UICollectionViewDelegateFlowLayout, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return 20
+        let meal = meals[collectionView.tag]
+        return meal.collection?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewReuseIdentifier", for: indexPath as IndexPath) as! ImageCollectionViewCell
         
-        let images = [#imageLiteral(resourceName: "meal1")]
-        cell.image.image = images[0]
+        let meal = meals[collectionView.tag]
+
+        cell.image.image = meal.collection?[indexPath.row]
         
         return cell
         
@@ -239,6 +244,10 @@ extension MealTableViewController: UICollectionViewDelegateFlowLayout, UICollect
         let width = collectionView.frame.width / 4 - 1
 
         return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Collection view at row \(collectionView.tag) selected index path \(indexPath)")
     }
 }
 
