@@ -106,8 +106,6 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
         cell.ratingControl.rating = meal.rating
         cell.message.text = meal.message
 
-        //print("HEIGHT 1 =", cell.imagesCollection.contentSize.height, "HEIGHT offset=", cell.imagesCollection.contentOffset.y)
-        cell.collectionHeight.constant = 390
         return cell
     }
 
@@ -245,7 +243,7 @@ extension MealTableViewController: UICollectionViewDelegateFlowLayout, UICollect
 
         return CGSize(width: width, height: width)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Collection view at row \(collectionView.tag) selected index path \(indexPath)")
     }
