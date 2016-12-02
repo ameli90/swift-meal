@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FMMosaicLayout
+import FTImageViewer
 
 class MealTableViewController: UITableViewController, UISearchBarDelegate {
 
@@ -108,14 +108,6 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
 
         return cell
     }
-
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        guard let tableViewCell = cell as? MealTableViewCell else { return }
-        
-        tableViewCell.setCollectionViewDataSourceDelegate(dataDelegate: self, dataSource: self, forRow: indexPath.row)
-    }
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? MealViewController,
@@ -205,47 +197,4 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
     }
 }
 
-extension MealTableViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-
-    public func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, numberOfColumnsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let meal = meals[collectionView.tag]
-        return meal.collection?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewReuseIdentifier", for: indexPath as IndexPath) as! ImageCollectionViewCell
-        
-        let meal = meals[collectionView.tag]
-
-        cell.image.image = meal.collection?[indexPath.row]
-
-        return cell
-        
-    }
-
-    // Size vertically between images
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
-    }
-    
-    // Eaach cell dimensions
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width / 4 - 1
-
-        return CGSize(width: width, height: width)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Collection view at row \(collectionView.tag) selected index path \(indexPath)")
-    }
-}
 

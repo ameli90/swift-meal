@@ -63,62 +63,26 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="atN-ZO-jdO" customClass="imagesCollectionView" customModule="FoodTracker" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="116.33333333333331" width="398" height="233.33333333333337"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqY-jN-Pk9">
+                                            <rect key="frame" x="8" y="116" width="398" height="236"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="v0V-JB-SGm"/>
-                                            </constraints>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rKc-Ro-mUh">
-                                                <size key="itemSize" width="50" height="50"/>
-                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            </collectionViewFlowLayout>
-                                            <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="collectionViewReuseIdentifier" id="SJO-MJ-giq" customClass="ImageCollectionViewCell" customModule="FoodTracker" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <subviews>
-                                                            <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meal1" translatesAutoresizingMaskIntoConstraints="NO" id="ike-jn-7ap">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                            </imageView>
-                                                        </subviews>
-                                                    </view>
-                                                    <color key="backgroundColor" red="1" green="0.48642522410983002" blue="0.23205358568559453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="ike-jn-7ap" secondAttribute="trailing" constant="-8" id="NjV-OF-yJ2"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="ike-jn-7ap" secondAttribute="bottom" constant="-8" id="ODv-cr-zV0"/>
-                                                        <constraint firstItem="ike-jn-7ap" firstAttribute="leading" secondItem="SJO-MJ-giq" secondAttribute="leadingMargin" constant="-8" id="eiS-a0-4V9"/>
-                                                        <constraint firstItem="ike-jn-7ap" firstAttribute="top" secondItem="SJO-MJ-giq" secondAttribute="topMargin" constant="-8" id="qqy-sw-4ZK"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outlet property="image" destination="ike-jn-7ap" id="ISI-CI-uEW"/>
-                                                    </connections>
-                                                </collectionViewCell>
-                                            </cells>
-                                        </collectionView>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="atN-ZO-jdO" firstAttribute="leading" secondItem="EhM-u8-8mz" secondAttribute="leading" id="2hu-9C-KR7"/>
-                                        <constraint firstItem="atN-ZO-jdO" firstAttribute="leading" secondItem="oMX-be-0fD" secondAttribute="leading" constant="8" id="B0p-bj-huc"/>
-                                        <constraint firstAttribute="bottom" secondItem="atN-ZO-jdO" secondAttribute="bottom" constant="10" id="CPv-Pe-Hbu"/>
                                         <constraint firstItem="EhM-u8-8mz" firstAttribute="top" secondItem="BTc-Lg-bzS" secondAttribute="bottom" constant="8" id="CnJ-dI-9r5"/>
+                                        <constraint firstItem="TqY-jN-Pk9" firstAttribute="leading" secondItem="oMX-be-0fD" secondAttribute="leading" constant="8" id="JgW-hb-9qE"/>
+                                        <constraint firstItem="TqY-jN-Pk9" firstAttribute="top" secondItem="EhM-u8-8mz" secondAttribute="bottom" constant="7.6666666666666714" id="NHJ-3o-uFT"/>
                                         <constraint firstItem="BTc-Lg-bzS" firstAttribute="top" secondItem="oMX-be-0fD" secondAttribute="top" id="bxg-H9-fiI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="EhM-u8-8mz" secondAttribute="trailing" id="di7-Bn-xQd"/>
+                                        <constraint firstAttribute="trailing" secondItem="TqY-jN-Pk9" secondAttribute="trailing" constant="8" id="gqh-Rf-Eip"/>
+                                        <constraint firstAttribute="bottom" secondItem="TqY-jN-Pk9" secondAttribute="bottom" constant="8" id="hBd-bS-ssb"/>
                                         <constraint firstItem="EhM-u8-8mz" firstAttribute="leading" secondItem="oMX-be-0fD" secondAttribute="leadingMargin" id="jCO-0R-EXq"/>
-                                        <constraint firstAttribute="trailing" secondItem="atN-ZO-jdO" secondAttribute="trailing" constant="8" id="sqk-qJ-Dnv"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="BTc-Lg-bzS" secondAttribute="trailing" id="taK-hy-epb"/>
-                                        <constraint firstItem="atN-ZO-jdO" firstAttribute="top" secondItem="EhM-u8-8mz" secondAttribute="bottom" constant="8" id="ttP-gV-dfS"/>
                                         <constraint firstItem="BTc-Lg-bzS" firstAttribute="leadingMargin" secondItem="oMX-be-0fD" secondAttribute="leadingMargin" id="yZb-1q-cWR"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="imagesCollection" destination="atN-ZO-jdO" id="upx-H0-9FQ"/>
                                     <outlet property="message" destination="EhM-u8-8mz" id="2r2-lo-7FJ"/>
                                     <outlet property="nameLabel" destination="5qg-F5-dbF" id="ejU-Zd-crH"/>
                                     <outlet property="photoImageView" destination="Iq7-u6-G3a" id="mYW-aq-Ezf"/>
@@ -273,7 +237,6 @@
     </scenes>
     <resources>
         <image name="Image" width="540" height="540"/>
-        <image name="meal1" width="540" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XHA-Vi-WOL"/>
