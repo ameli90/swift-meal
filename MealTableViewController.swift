@@ -32,7 +32,7 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
         present(searchController, animated: true, completion: nil)
         
     }
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let resultController = self.searchController.searchResultsController as? MealTableViewController {
             let photo1 = UIImage(named: "meal1")!
@@ -205,9 +205,9 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
     }
 }
 
-extension MealTableViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, FMMosaicLayoutDelegate {
+extension MealTableViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
-    public func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: FMMosaicLayout!, numberOfColumnsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, numberOfColumnsInSection section: Int) -> Int {
         return 4
     }
     
@@ -223,7 +223,7 @@ extension MealTableViewController: UICollectionViewDelegateFlowLayout, UICollect
         let meal = meals[collectionView.tag]
 
         cell.image.image = meal.collection?[indexPath.row]
-        
+
         return cell
         
     }
