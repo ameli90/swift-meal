@@ -9,6 +9,10 @@
 import UIKit
 import Kingfisher
 
+// MARK: Settings
+
+public let FTImageColumnCount: Int = 3
+
 //MARK: - Marcros -
 
 private let FTImageViewerAnimationDuriation : TimeInterval =  0.3
@@ -471,31 +475,28 @@ open class FTImageGridView: UIView {
         
         if imageArray.count > 0 {
             FTImageGridViewTapBlock = tapBlock
-            
-            let imgHeightFullRow : CGFloat = (frame.size.width - FTImageGridViewImageMargin * 2) / 3
+
+            let imgHeightFullRow : CGFloat = (frame.size.width - FTImageGridViewImageMargin * CGFloat((FTImageColumnCount - 1))) / CGFloat(FTImageColumnCount)
+            let remainImagesCount = imageArray.count % FTImageColumnCount
+            let minIndexRemainImages = imageArray.count - remainImagesCount - 1
             
             for i in 0 ... imageArray.count-1 {
-                
+
                 var x : CGFloat
                 var y : CGFloat
                 var imgHeight : CGFloat
 
-                if (imageArray.count % 3 == 1 && i == (imageArray.count - 1) ) {
-                    x = CGFloat(i % 3) * (imgHeightFullRow + FTImageGridViewImageMargin)
-                    y = CGFloat(i / 3) * (imgHeightFullRow + FTImageGridViewImageMargin)
+                // the last remain images has different size
+                if (remainImagesCount > 0 && i > minIndexRemainImages) {
+                    imgHeight = frame.size.width / CGFloat(remainImagesCount)
                     
-                    imgHeight = frame.size.width
-                    
-                } else if (imageArray.count % 3 == 2 && (i == (imageArray.count - 1) || i == (imageArray.count - 2))) {
-                    
-                    y = CGFloat(i / 3) * (imgHeightFullRow + FTImageGridViewImageMargin)
-                    imgHeight = frame.size.width / 2
-                    
-                    x = CGFloat(i % 2) * (imgHeight + FTImageGridViewImageMargin)
+                    x = CGFloat(i % remainImagesCount) * (imgHeight + FTImageGridViewImageMargin)
+                    y = CGFloat(i / FTImageColumnCount) * (imgHeightFullRow + FTImageGridViewImageMargin)
                 } else {
                     imgHeight = imgHeightFullRow
-                    x = CGFloat(i % 3) * (imgHeight + FTImageGridViewImageMargin)
-                    y = CGFloat(i / 3) * (imgHeight + FTImageGridViewImageMargin)
+                    
+                    x = CGFloat(i % FTImageColumnCount) * (imgHeight + FTImageGridViewImageMargin)
+                    y = CGFloat(i / FTImageColumnCount) * (imgHeight + FTImageGridViewImageMargin)
                 }
 
                 let imageButton  = UIButton()
@@ -518,32 +519,30 @@ open class FTImageGridView: UIView {
     //MARK: - get Height With Width
     
     open class func getHeightWithWidth(_ width: CGFloat, imgCount: Int) -> CGFloat{
-        let notInCell = imgCount % 3
         
         var photoAlbumHeight : CGFloat = 0
-        let imgHeight: CGFloat = (width - FTImageGridViewImageMargin * 2) / 3
+        let imgHeight: CGFloat = (width - FTImageGridViewImageMargin * (CGFloat(FTImageColumnCount) - 1)) / CGFloat(FTImageColumnCount)
+        let remainImagesCount = imgCount % FTImageColumnCount
         
-        if (notInCell > 0) {
-            
-            var rows = floor(Float(imgCount) / 3)
-            rows = rows < 1 ? 1 : rows
-            
-            if (imgCount >= 3) {
-                photoAlbumHeight = imgHeight * CGFloat(rows) +
-                    FTImageGridViewImageMargin * CGFloat(rows)
-            }
-            
-            var imagesAdditional : CGFloat = 0
-            if (imgCount % 3 == 1) {
-                imagesAdditional = width
+        // If we have not fullfilled row
+        if (remainImagesCount > 0) {
 
-            } else if (imgCount % 3 == 2) {
-                imagesAdditional = width / 2
+            // Add height of full rows if at least one fullfilled row exist
+            if (imgCount >= FTImageColumnCount) {
+                let fullfilledRows = floor(CGFloat(imgCount) / CGFloat(FTImageColumnCount))
+                photoAlbumHeight = imgHeight * CGFloat(fullfilledRows) + FTImageGridViewImageMargin * CGFloat(fullfilledRows)
             }
-            photoAlbumHeight = photoAlbumHeight + imagesAdditional
             
+            // Add height of remain images height
+
+            let imagesAdditional  = width / CGFloat(remainImagesCount)
+            
+            photoAlbumHeight = photoAlbumHeight + imagesAdditional
+
         } else {
-            photoAlbumHeight = imgHeight * CGFloat(ceilf(Float(imgCount) / 3)) + FTImageGridViewImageMargin * CGFloat(ceilf(Float(imgCount) / 3)-1)
+            // Rows are fullfilled by FTImageColumnCount in each row
+            photoAlbumHeight = CGFloat(imgHeight) * (ceil(CGFloat(imgCount / FTImageColumnCount))) +
+                               CGFloat(FTImageGridViewImageMargin) * (ceil(CGFloat(imgCount / FTImageColumnCount) - 1))
         }
         
         return photoAlbumHeight
