@@ -125,15 +125,15 @@
 		693836F41DBFFD63009B968D /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				6929BDF61DE6603700A05752 /* MealTableViewController.swift */,
+				696A91DF1DF3A08F000451F1 /* Rating */,
+				696A91DD1DF3A05B000451F1 /* Model */,
+				696A91DC1DF3A04C000451F1 /* Posts */,
+				696A91DB1DF3A03C000451F1 /* Post */,
+				696A91DA1DF3A02A000451F1 /* Cells */,
 				693836F51DBFFD63009B968D /* AppDelegate.swift */,
-				693836F71DBFFD63009B968D /* MealViewController.swift */,
 				693836F91DBFFD63009B968D /* Main.storyboard */,
-				6929BDF21DE6500D00A05752 /* MealTableViewCell.swift */,
-				691714B91DD13D9E00140002 /* RatingControl.swift */,
 				693836FC1DBFFD63009B968D /* Assets.xcassets */,
 				693836FE1DBFFD63009B968D /* LaunchScreen.storyboard */,
-				6929BDF01DE63A6F00A05752 /* Meal.swift */,
 				693837011DBFFD63009B968D /* Info.plist */,
 				69900E231DEFACD100028A98 /* FoodTracker-Bridging-Header.h */,
 			);
@@ -156,6 +156,46 @@
 				693837171DBFFD63009B968D /* Info.plist */,
 			);
 			path = TestUITests;
+			sourceTree = "<group>";
+		};
+		696A91DA1DF3A02A000451F1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6929BDF21DE6500D00A05752 /* MealTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		696A91DB1DF3A03C000451F1 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				693836F71DBFFD63009B968D /* MealViewController.swift */,
+			);
+			name = Post;
+			sourceTree = "<group>";
+		};
+		696A91DC1DF3A04C000451F1 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				6929BDF61DE6603700A05752 /* MealTableViewController.swift */,
+			);
+			name = Posts;
+			sourceTree = "<group>";
+		};
+		696A91DD1DF3A05B000451F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6929BDF01DE63A6F00A05752 /* Meal.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		696A91DF1DF3A08F000451F1 /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				691714B91DD13D9E00140002 /* RatingControl.swift */,
+			);
+			name = Rating;
 			sourceTree = "<group>";
 		};
 		C29B0E4A1CB36538EF1E03A3 /* Frameworks */ = {
@@ -523,7 +563,7 @@
 				INFOPLIST_FILE = Test/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vpetrenko.FoodTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = vpetrenko.Posts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Test/FoodTracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -541,7 +581,7 @@
 				INFOPLIST_FILE = Test/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vpetrenko.FoodTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = vpetrenko.Posts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Test/FoodTracker-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

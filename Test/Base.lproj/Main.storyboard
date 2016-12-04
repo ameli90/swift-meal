@@ -69,7 +69,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqY-jN-Pk9" userLabel="ImageGallery" customClass="FTImageGridView" customModule="FoodTracker">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqY-jN-Pk9" userLabel="ImageGallery" customClass="FTImageGridView" customModule="FTImageViewer">
                                             <rect key="frame" x="8" y="116" width="304" height="236"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
