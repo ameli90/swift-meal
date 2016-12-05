@@ -14,11 +14,13 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: Properties
     
     @IBOutlet var searchBar: UITableView!
+    @IBOutlet weak var openMenu: UIBarButtonItem!
+    
     var meals = [Meal]()
     var searchController: UISearchController!
 
     var data : [[String]] = []
-    
+
     @IBAction func openSearch(_ sender: Any) {
         
         // Create the search results view controller and use it for the `UISearchController`.
@@ -41,18 +43,28 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
             let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. END", collection: nil)!
 
             resultController.meals = [meal1]
-
+            
             resultController.tableView.reloadData()
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        // Open menu action
+        openMenu.target = self.revealViewController()
+        openMenu.action = #selector(SWRevealViewController.revealToggle(_:))
+        
+        if (self.revealViewController() != nil) {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         tableView.layoutIfNeeded()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Enable self sizing rows.
         tableView.estimatedRowHeight = 85
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -65,7 +77,7 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
             loadSampleMeals()
         //}
         
-        navigationItem.leftBarButtonItem = editButtonItem
+        //navigationItem.leftBarButtonItem = editButtonItem
         
         data = [ [ "http://ww4.sinaimg.cn/mw600/7352978fgw1f6gkap8p45j20f00f074t.jpg"
                    ],
@@ -258,6 +270,11 @@ class MealTableViewController: UITableViewController, UISearchBarDelegate {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Back button item
+        let backItem = UIBarButtonItem()
+        backItem.title = "Posts"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+        
         if segue.identifier == "ShowDetail" {
             let mealDetailViewController = segue.destination as! MealViewController
             // Get the cell that generated this segue.
